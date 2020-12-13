@@ -1,0 +1,17 @@
+#progressBarContainer {
+    background: rgba(255,255,255,0.05);
+    width: 100%;
+}
+  
+  
+#progressBar {
+    background: #6A00F4;
+    transform-origin: top left;
+    transform: scale(0,0);
+    opacity: 0;
+}
+
+#progressBarContainer,
+#progressBar {
+    height: 10px;
+}
