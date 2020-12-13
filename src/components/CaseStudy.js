@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -37,6 +38,8 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import IconButton from '@material-ui/core/IconButton';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import { Link as scrollLink, animateScroll as smoothScroll } from "react-scroll";
+import AnchorLink from 'react-anchor-link-smooth-scroll'
+import Divider from '@material-ui/core/Divider';
 
 const theme = createMuiTheme({
   typography: {
@@ -116,7 +119,8 @@ const useStyles = makeStyles((theme) => ({
     },
     headerCaption: {
       fontWeight: "fontWeightBold"
-    }
+    },
+    toolbar: theme.mixins.toolbar
 
   }));
 
@@ -151,111 +155,152 @@ export default function Home() {
     const [scroll, setScroll] = useState(0);
     const [activeStep, setActiveStep] = React.useState(0);
     const steps = ['Overview', 'Research', 'Defining Focus', 'Prototyping', 'Final Design', 'Results'];
+    const anchors = ['#Overview', '#Research', '#DefiningFocus', '#Prototyping', '#FinalDesign', '#Results'];
     const [completed, setCompleted] = React.useState({});
     useEffect(() => {
+      let progressBarHandler = () => {
+        const totalScroll = document.documentElement.scrollTop;
+        const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scroll = `${totalScroll / windowHeight}`;
+        
+        setScroll(scroll);
+      }
 
-        let progressBarHandler = () => {
-            
-            const totalScroll = document.documentElement.scrollTop;
-            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scroll = `${totalScroll / windowHeight}`;
-
-            setScroll(scroll);
-        }
-
-        window.addEventListener("scroll", progressBarHandler);
-
-        return () => window.removeEventListener("scroll", progressBarHandler);
+      window.addEventListener("scroll", progressBarHandler);
+      return () => window.removeEventListener("scroll", progressBarHandler);
     });
 
     const handleStep = (step) => () => {
         setActiveStep(step);
-      };
+        console.log("#"+{step})
+    };
 
   return (
     <ThemeProvider theme={theme}>
       <div className={classes.root}>
-      
       <Box bgcolor="primary.light" p={2}>
           <Container>
-          
           <Grid
-        container
-        direction="row"
-        justify="stretch"
-        alignItems="flex-start"
-      >
-          <Grid item xs={12} sm={6} className={classes.gridItemHeader}>
-          <Typography variant = 'h4'>EasyA</Typography>
-          <Typography variant = 'button'><Box fontWeight="fontWeightMedium" fontSize = {20}>A Digital Personal Health Care Journal</Box></Typography>
+           container
+           direction="row"
+           justify="stretch"
+           alignItems="flex-start"
+          >
+            <Grid item xs={12} sm={6} 
+             className={classes.gridItemHeader}>
+               <Typography variant = 'h4'>EasyA</Typography>
+               <Typography variant = 'button'>
+                 <Box fontWeight="fontWeightMedium" fontSize = {20}>
+                  A Digital Personal Health Care Journal
+                 </Box>
+               </Typography>
+            </Grid>
+            
+            <Grid item xs={12} sm={6} direction="column">
+              <Grid item className={classes.gridItemHeader}>
+                <Typography variant = 'body'>
+                  <Box fontWeight='fontWeightBold' display='inline'>Role</Box>
+                  : UX Researcher & Designer
+                </Typography>
+              </Grid>
+              <Grid item className={classes.gridItemHeader}>
+                <Typography variant = 'body'>
+                  <Box fontWeight='fontWeightBold' display='inline'>Team</Box>
+                  : Cindy Liu, Evelyn Li, Rachel Arredondo
+                </Typography>
+              </Grid>
+              <Grid item className={classes.gridItemHeader}>
+                <Typography variant = 'body'><Box fontWeight='fontWeightBold' display='inline'>Tools Used</Box>
+                : Figma
+                </Typography>
+              </Grid>
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={6} direction="column">
-          <Grid item className={classes.gridItemHeader}>
-          <Typography variant = 'body'><Box fontWeight='fontWeightBold' display='inline'>Role</Box>: UX Researcher & Designer</Typography>
-          </Grid>
-          <Grid item className={classes.gridItemHeader}>
-          <Typography variant = 'body'><Box fontWeight='fontWeightBold' display='inline'>Team</Box>: Cindy Liu, Evelyn Li, Rachel Arredondo</Typography>
-          </Grid>
-          <Grid item className={classes.gridItemHeader}>
-          <Typography variant = 'body'><Box fontWeight='fontWeightBold' display='inline'>Tools Used</Box>: Figma</Typography>
-          </Grid>
-          </Grid>
-          </Grid>
-          
           </Container>
-        </Box>
-        <AppBar position="static">
-        <Stepper nonLinear activeStep={activeStep} position = "fixed">
+      </Box>
+      
+      <AppBar position="sticky" elevation = {0}>
+        <Stepper nonLinear activeStep={activeStep} position = "sticky">
         {steps.map((label, index) => (
           <Step key={label}>
+            <AnchorLink offset='100' href={anchors[index]} style={{ textDecoration: 'none' }}>
             <StepButton onClick={handleStep(index)}>
-              {label}
+              <Typography>{label} </Typography>
             </StepButton>
+            </AnchorLink>
           </Step>
         ))}
-      </Stepper>
-      <div id="progressBarContainer">
-                <div id="progressBar" style={{transform: `scale(${scroll}, 1)`, opacity: `100`}} />
-            </div>
-            </AppBar>
-        <Container >
-        
+        </Stepper>
+        <div id="progressBarContainer">
+          <div id="progressBar" style={{transform: `scale(${scroll}, 1)`, opacity: `100`}} />
+        </div>
+      </AppBar>
+      
+      <Container >
       <Grid
         container
         direction="column"
         justify="stretch"
         alignItems="flex-start"
       >
-          <Grid item>
-        
-      </Grid>
-      <Grid item className={classes.gridItem}>
-          <Typography variant = 'h5' color="primary"><Box fontWeight='fontWeightMedium' display='inline'>Overview</Box></Typography>
+        <Grid item className={classes.gridItem}>
+          <Typography variant = 'h5' color="primary">
+            <Box fontWeight='fontWeightMedium' display='inline'>
+              <section id='Overview'>
+                Overview
+              </section>
+            </Box>
+          </Typography>
+          
           <Grid
-        container
-        direction="row"
-        justify="stretch"
-        alignItems="flex-start"
-      >
-          <Grid item xs={12} sm={6}>
-              <Typography variant = 'body'>Highly mobile users currently rely on communicating with people back home or carrying their paper records, or rely on their memory to inform new or existing providers of their history. Being on the go means having all your data with you at all times in a more accessible manner. But because of papers and various online portals many people’s medical records are scattered everywhere. We want to provide a home for this data in the form of a personal health journal, for owning and sharing your health information at any given time and place.
-We aimed to create a personal health journal for each user - a space to upload, edit and store their medical history for understanding their own health and help share with their health care providers.</Typography>
-          </Grid>
-          <Grid item xs={12} sm={6}>
+           container
+           direction="row"
+           justify="stretch"
+           alignItems="flex-start"
+           >
+             <Grid item xs={12} sm={6}>
+              <Typography variant = 'body'>
+                Highly mobile users currently rely on communicating with people back home or 
+                carrying their paper records, or rely on their memory to inform new or existing 
+                providers of their history. Being on the go means having all your data with you 
+                at all times in a more accessible manner. But because of papers and various online
+                portals many people’s medical records are scattered everywhere. We want to provide 
+                a home for this data in the form of a personal health journal, for owning and 
+                sharing your health information at any given time and place.
+                We aimed to create a personal health journal for each user - a space to upload, 
+                edit and store their medical history for understanding their own health and help 
+                share with their health care providers.
+              </Typography>
+            </Grid>
+          
+            <Grid item xs={12} sm={6}>
               <img height={300} src={main} />
-               </Grid>
+            </Grid>
           </Grid>
-         
-          
-
-      </Grid>
-      <Grid item className={classes.gridItem}>
+        <Divider />
+        </Grid>
+        
+        <Grid item className={classes.gridItem}>
         <Grid item>
-          <Typography variant = 'h5' color="primary"><Box fontWeight='fontWeightMedium' display='inline'>Initial Research</Box></Typography>
+          <Typography variant = 'h5' color="primary">
+            <Box fontWeight='fontWeightMedium' display='inline'>
+            <section id='Research'>
+              Initial Research
+            </section>
+            </Box>
+          </Typography>
           
           
-          <Typography variant = 'h6'>Interviews</Typography>
-          <Typography variant = 'body'><Box fontWeight='fontWeightBold' display='inline'>Who did we interview?</Box></Typography></Grid>
+          <Typography variant = 'h6'>
+            Interviews
+          </Typography>
+          
+          <Typography variant = 'body'>
+            <Box fontWeight='fontWeightBold' display='inline'>
+              Who did we interview?
+            </Box>
+          </Typography>
+        </Grid>
           
           <Typography variant = "body">We interviewed participants who represent various backgrounds, cultures, ages, genders, and experiences. These individuals had varied experiences in accessing their medical records. 
 </Typography>
@@ -263,6 +308,7 @@ We aimed to create a personal health journal for each user - a space to upload, 
 <Typography variant = 'body'><Box fontWeight='fontWeightBold' display='inline'>Activities</Box></Typography></Grid>
 <Typography variant = "body">In order to discover more valuable insights pertaining to our research goal, we conducted over 12 contextual user-interviews using Direct Storytelling as the key method. 
 </Typography>
+
 <Grid item className={classes.gridItem}>
 <Typography variant = 'body'><Box fontWeight='fontWeightBold' display='inline'>Methods</Box></Typography></Grid>
 
@@ -275,9 +321,12 @@ We aimed to create a personal health journal for each user - a space to upload, 
           <Typography variant = 'h5' color="primary"><Box fontWeight='fontWeightMedium' display='inline'>Customer Journey Map</Box></Typography>
           </Grid>
           <img height={370} src={before} />
+          <Divider />
       </Grid>
       <Grid item className={classes.gridItem}>
+      <section id='DefiningFocus'>
           <Typography variant = 'h5'>Defining Focus</Typography>
+          </section>
       </Grid>
       <Grid item className={classes.gridItem}>
           <Typography variant = 'h5'>Scenario</Typography>
@@ -286,20 +335,25 @@ We aimed to create a personal health journal for each user - a space to upload, 
           
       </Grid>
       <Grid item className={classes.gridItem}>
+      <section id='Prototyping'>
           <Typography variant = 'h5'>Prototyping</Typography>
+          </section>
           <Typography variant = 'h6'>User Flows</Typography>
           <Typography variant = 'h6'>Micro-Sitemap</Typography>
           <Typography variant = 'h6'>Lo-Fi Prototype</Typography>
           <Typography variant = 'h6'>Mid-Fi Prototype</Typography>
       </Grid>
       <Grid item className={classes.gridItem}>
+      <section id='FinalDesign'>
           <Typography variant = 'h5'>Final Design</Typography>
-          
+         </section>
       </Grid>
 
       </Grid>
       <Grid item className={classes.gridItem}>
+      <section id='Results'>
           <Typography variant = 'h5' color="primary"><Box fontWeight='fontWeightMedium' display='inline'>Results</Box></Typography>
+          </section>
           </Grid>
           <img height={400} src={afterPersona} />
      

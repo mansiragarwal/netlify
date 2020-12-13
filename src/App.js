@@ -75,7 +75,7 @@ const Nav = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <AppBar className={classes.navbar} position="static" color = "white">
+      <AppBar position="sticky" color = "white" elevation={0}>
         <Toolbar>
         <Link href={`#/`} className={classes.title} style={{ textDecoration: 'none' }}>
           <Typography variant="h6">
@@ -92,7 +92,7 @@ const Nav = () => {
           </Link>
         </Toolbar>
       </AppBar>
-      </div>
+     </div>
   )
 }
 

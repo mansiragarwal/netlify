@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
     },
     loop: {
       color: 'black',
-      fontWeight: 700
+      fontWeight: 700,
     },
     container: {
       alignItems: 'center',
@@ -132,10 +132,10 @@ const useStyles = makeStyles((theme) => ({
   };
 
   const TEXTS = [
-    "an ex-Computer Science student",
-    "a current Human-Computer Interaction student",
-    "a UX designer/researcher",
-    "a front-end developer"
+    "An ex-Computer Science student",
+    "A current Human-Computer Interaction student",
+    "A UX designer/researcher",
+    "A front-end developer"
   ];
   
 
@@ -157,12 +157,12 @@ export default function Home() {
         alignItems="flex-start"
       >
       <Box my={10}>
-      <Typography color = 'black' variant = 'h4'> Hi! I’m Mansi Agarwal </Typography> 
-      <Typography color = 'primary' variant = 'h6'> I’m <TextLoop className={classes.loop}>
-        <span>an ex-Computer Science student </span>
-        <span>a current Human-Computer Interaction student </span>
-        <span>a UX designer/researcher </span>
-        <span>a front-end developer </span>
+      <Typography color = 'black' variant = 'h4'>Mansi Agarwal </Typography> 
+      <Typography variant = 'h6'><TextLoop className={classes.loop}>
+        <span>Ex-Computer Science student </span>
+        <span>Current Human-Computer Interaction student </span>
+        <span>UX designer/researcher </span>
+        <span>Front-end developer </span>
       </TextLoop> at Carnegie Mellon University. </Typography> 
       <Typography color = 'primary' variant = 'h6'> Passionate about bringing more diversity into UX design and development.  </Typography> 
       <Typography color = 'black' variant = 'h6'> Conversations lead to ideas - 
