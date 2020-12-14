@@ -26,6 +26,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
+import { fontSize } from '@material-ui/system';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -39,21 +40,14 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flex : 1,
-    color : 'initial'
+    color : 'initial',
   },
-  navbar : {
-    marginLeft: 2,
+  response: {
+    fontSize: 20,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 16,
+    },
   },
-  navbarElem: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
-      width: 'auto',
-      },
-    } 
 }));
 
 function App() {
@@ -78,12 +72,12 @@ const Nav = () => {
       <AppBar position="sticky" color = "white" elevation={0}>
         <Toolbar>
         <Link href={`#/`} className={classes.title} style={{ textDecoration: 'none' }}>
-          <Typography variant="h6">
+          <Typography className={classes.response}>
             Mansi Agarwal
           </Typography>
           </Link>
-          <Link href={`#/about`} color="black" style={{ textDecoration: 'none' }}>
-          <Typography variant="h6" className={classes.navbarElem}>
+          <Link color="initial" href={`#/about`} style={{ textDecoration: 'none' }}>
+          <Typography className={classes.response}>
             About Me
           </Typography>
           </Link>

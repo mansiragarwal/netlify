@@ -2,6 +2,21 @@ import React from 'react';
 import { Container, Grid, Typography, Box } from '@material-ui/core';
 import me from './images/me.png'
 import { makeStyles } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+
+const theme = createMuiTheme({
+  
+  palette: {
+    primary: {
+      main: '#6A00F4',
+    },
+    secondary: {
+      // This is green.A700 as hex.
+      main: '#11cb5f',
+    },
+  },
+});
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,6 +77,7 @@ const useStyles = makeStyles((theme) => ({
 export default function About() {
   const classes = useStyles();
     return (
+      <ThemeProvider theme={theme}>
         <div>
             <Container>
 
@@ -82,12 +98,7 @@ export default function About() {
                     </Typography>
 
                     <Typography variant="body">
-                     <Box lineHeight={1.6}>I am currently pursuing a Bachelor’s in Human-Computer Interaction at Carnegie Mellon. Previously, 
-                    I was studying computer science, but I had a strong calling towards human-centered design and software and changed my major 
-                    as a senior. My journey so far has given me the technical abilities to make my ideas a reality, I am now excited to cultivate
-                    the thinking and skills it takes to make those ideas user-experience focused.
-                    My interest lies especially in the integration of diversity of thought, culture and perspectives into any project I am part 
-                    of. Being from an interdisciplinary and international background myself, I like to adopt this diversity in every project I work on.
+                     <Box lineHeight={1.6} fontWeight="fontWeightBold" my={5}>Currently looking for full-time employment in User-Experience Design and Development!
                     </Box>
                     </Typography>
 
@@ -97,6 +108,8 @@ export default function About() {
               </Grid>
               </Grid>
 </Container>
+
         </div>
+        </ThemeProvider>
     )
 }

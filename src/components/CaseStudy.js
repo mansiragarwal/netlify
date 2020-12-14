@@ -99,6 +99,11 @@ const useStyles = makeStyles((theme) => ({
     title: {
       color: theme.palette.primary.light,
     },
+    absolute: {
+      position: 'absolute',
+      bottom: theme.spacing(2),
+      right: theme.spacing(3),
+    },
     titleBar: {
       background:
         'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
@@ -106,32 +111,9 @@ const useStyles = makeStyles((theme) => ({
     headerCaption: {
       fontWeight: "fontWeightBold"
     },
-    toolbar: theme.mixins.toolbar
-
+    toolbar: theme.mixins.toolbar,
+    
   }));
-
-  const tileData = [
-      {
-          img: desktopHome,
-          title: 'Home Page',
-          author: 'author',
-      },
-      {
-        img: desktopReports,
-        title: 'Reports Page',
-        author: 'author',
-      },
-      {
-        img: desktopPinned,
-        title: 'Pinned Reports',
-        author: 'author',
-      },
-      {
-        img: desktopVisits,
-        title: 'Pinned Visits',
-        author: 'author',
-      },
-    ];
 
   
   
@@ -142,7 +124,6 @@ export default function Home() {
     const [activeStep, setActiveStep] = React.useState(0);
     const steps = ['Overview', 'Research', 'Defining Focus', 'Prototyping', 'Final Design', 'Results'];
     const anchors = ['#Overview', '#Research', '#DefiningFocus', '#Prototyping', '#FinalDesign', '#Results'];
-    const [completed, setCompleted] = React.useState({});
     useEffect(() => {
       let progressBarHandler = () => {
         const totalScroll = document.documentElement.scrollTop;

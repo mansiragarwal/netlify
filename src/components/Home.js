@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
      }
     },
     loop: {
-      color: 'black',
+      color: 'primary',
       fontWeight: 700,
     },
     container: {
@@ -104,8 +104,8 @@ const useStyles = makeStyles((theme) => ({
     },
     card: {
       padding: 10,
-      marginBottom: 30,
-      marginRight: 30
+      marginBottom: 40,
+      marginRight: 30,
     },
     gridItemHeader: {
       paddingTop: 15
@@ -118,20 +118,6 @@ const useStyles = makeStyles((theme) => ({
     height: 400,
   },
   }));
-
-  const defaultProps = {
-    bgcolor: 'background.paper',
-    borderColor: 'primary',
-    border: 1,
-  };
-
-  const TEXTS = [
-    "An ex-Computer Science student",
-    "A current Human-Computer Interaction student",
-    "A UX designer/researcher",
-    "A front-end developer"
-  ];
-  
 
 export default function Home() {
     const classes = useStyles();
@@ -146,31 +132,40 @@ export default function Home() {
         <Container>
           <Grid
            container
+           direction="column"
            justify="flex-start"
            alignItems="flex-start"
           >
-         <Box my={10}>
-           <Typography color = 'black' variant = 'h4'>Mansi Agarwal </Typography> 
-           <Typography variant = 'h6'>
-             <TextLoop className={classes.loop}>
+         <Box my={5}>
+           <Typography color = 'black' variant = 'h3'>Mansi Agarwal </Typography> 
+           <Typography variant = 'h5' color="primary">
+             <TextLoop>
               <span>Ex-Computer Science student </span>
               <span>Current Human-Computer Interaction student </span>
               <span>UX designer/researcher </span>
               <span>Front-end developer </span>
-             </TextLoop> at Carnegie Mellon University. 
-           </Typography>
-
-
-      <Typography color = 'primary' variant = 'h6'> Passionate about bringing more diversity into UX design and development.  </Typography> 
-      <Typography color = 'black' variant = 'h6'> Conversations lead to ideas - 
+             </TextLoop> <Box display='inline' color = "black">at Carnegie Mellon University.</Box> </Typography>
+           
+           </Box>
+           <Grid item>
+      <Typography variant = 'h6'> Passionate about bringing more diversity into UX design and development.  </Typography> 
+      <Typography variant = 'h6'> Conversations lead to ideas - 
       <Link href="mailto:mansi.r.agarwal@gmail.com" style={{ textDecoration: 'none' }} className={classes.link}> email me</Link> or find me on 
       <Link style={{ textDecoration: 'none' }} className={classes.link}> linkedIn</Link>.  
       </Typography> 
-        </Box>
+      </Grid>
+       
         </Grid>
         
         <Grid container>
-          
+        <Grid item xs={12}>
+          <Box my={5}>
+            <Typography variant = 'h5'>Projects</Typography>
+            <Divider />
+          </Box>
+        </Grid>
+        
+
           <Grid item xs={12}>
       <motion.div
        whileHover={{
@@ -180,7 +175,7 @@ export default function Home() {
        whileTap={{ scale: 0.9 }}
       >
         <Link href={`#/casestudy`} style={{ textDecoration: 'none' }}>
-      <Card width={600} className={classes.card}>
+      <Card width={600} className={classes.card} color="primary">
         <CardActionArea>
           <CardMedia
            className={classes.media}
@@ -204,7 +199,7 @@ export default function Home() {
       </Link>
       </motion.div>
       </Grid>
-      <Grid item>
+      <Grid item xs>
       <motion.div
        whileHover={{
          scale: 1.05,
@@ -235,7 +230,7 @@ export default function Home() {
     </Card>
     </motion.div>
     </Grid>
-    <Grid item>
+    <Grid item xs>
     <motion.div
   whileHover={{
     scale: 1.05,
@@ -266,7 +261,6 @@ export default function Home() {
     </Grid>
     </Grid>
       </Container>
-    <About /> 
     </div>
 
 
