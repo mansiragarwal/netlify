@@ -40,23 +40,9 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import { Link as scrollLink, animateScroll as smoothScroll } from "react-scroll";
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 import Divider from '@material-ui/core/Divider';
+import Hidden from '@material-ui/core/Hidden';
 
 const theme = createMuiTheme({
-  typography: {
-    // Use the system font instead of the default Roboto font.
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
-  },
   palette: {
     primary: {
       main: '#6A00F4',
@@ -218,7 +204,7 @@ export default function Home() {
           </Grid>
           </Container>
       </Box>
-      
+      <Hidden xsDown>
       <AppBar position="sticky" elevation = {0}>
         <Stepper nonLinear activeStep={activeStep} position = "sticky">
         {steps.map((label, index) => (
@@ -235,6 +221,7 @@ export default function Home() {
           <div id="progressBar" style={{transform: `scale(${scroll}, 1)`, opacity: `100`}} />
         </div>
       </AppBar>
+      </Hidden>
       
       <Container >
       <Grid

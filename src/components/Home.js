@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
-import { Toolbar, Card, CardContent } from '@material-ui/core';
+import { Toolbar, Card, CardContent, Divider } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
 import TextTransition, { presets } from "react-text-transition";
@@ -22,23 +22,13 @@ import desktopHome from './images/Desktop/Home.png'
 import bra from './images/blackroyalart_vector.png'
 import wayq from './images/wayq.png'
 import About from './About.js'
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardMedia from '@material-ui/core/CardMedia';
+import Chip from '@material-ui/core/Chip';
 
 const theme = createMuiTheme({
-  typography: {
-    // Use the system font instead of the default Roboto font.
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
-  },
+  
   palette: {
     primary: {
       main: '#6A00F4',
@@ -113,8 +103,9 @@ const useStyles = makeStyles((theme) => ({
       width: 38,
     },
     card: {
-      display: 'flex',
-      flexDirection: 'column'
+      padding: 10,
+      marginBottom: 30,
+      marginRight: 30
     },
     gridItemHeader: {
       paddingTop: 15
@@ -122,7 +113,10 @@ const useStyles = makeStyles((theme) => ({
   gridItem: {
     paddingTop: 30,
     paddingBottom: 30
-  }
+  },
+  media: {
+    height: 400,
+  },
   }));
 
   const defaultProps = {
@@ -150,136 +144,124 @@ export default function Home() {
     <ThemeProvider theme={theme}>
       <div className={classes.root}>
         <Container>
-      <Grid
-        container
-        direction="column"
-        justify="flex-start"
-        alignItems="flex-start"
-      >
-      <Box my={10}>
-      <Typography color = 'black' variant = 'h4'>Mansi Agarwal </Typography> 
-      <Typography variant = 'h6'><TextLoop className={classes.loop}>
-        <span>Ex-Computer Science student </span>
-        <span>Current Human-Computer Interaction student </span>
-        <span>UX designer/researcher </span>
-        <span>Front-end developer </span>
-      </TextLoop> at Carnegie Mellon University. </Typography> 
+          <Grid
+           container
+           justify="flex-start"
+           alignItems="flex-start"
+          >
+         <Box my={10}>
+           <Typography color = 'black' variant = 'h4'>Mansi Agarwal </Typography> 
+           <Typography variant = 'h6'>
+             <TextLoop className={classes.loop}>
+              <span>Ex-Computer Science student </span>
+              <span>Current Human-Computer Interaction student </span>
+              <span>UX designer/researcher </span>
+              <span>Front-end developer </span>
+             </TextLoop> at Carnegie Mellon University. 
+           </Typography>
+
+
       <Typography color = 'primary' variant = 'h6'> Passionate about bringing more diversity into UX design and development.  </Typography> 
       <Typography color = 'black' variant = 'h6'> Conversations lead to ideas - 
       <Link href="mailto:mansi.r.agarwal@gmail.com" style={{ textDecoration: 'none' }} className={classes.link}> email me</Link> or find me on 
       <Link style={{ textDecoration: 'none' }} className={classes.link}> linkedIn</Link>.  
       </Typography> 
         </Box>
-      
-  
-  <motion.div
-  whileHover={{
-    scale: 1.1,
-    transition: { duration: 0.5 },
-  }}
-  whileTap={{ scale: 0.9 }}
->
-<Box borderRadius={16} {...defaultProps} >
-<Link href={`#/casestudy`} style={{ textDecoration: 'none' }}>
-
- <Grid
-        container
-        direction="row"
-        justify="stretch"
-        alignItems="flex-start"
-        className={classes.gridItemHeader}
-      >
+        </Grid>
         
-          <Grid item xs={12} sm={6} className={classes.gridItem}>
-          <img className={classes.cover} alt="complex" src={desktopHome} />
-          </Grid>
-          <Grid item xs={12} sm={6} direction="column">
-          <Grid item className={classes.gridItemHeader}>
-          <Typography variant = 'h6'>EasyA</Typography>
-          <Typography variant = 'button' color = "primary">A Digital Personal Health Care Journal</Typography>
-          </Grid>
-          <Grid item className={classes.gridItemHeader}>
-          <Typography variant = 'body'><Box fontWeight='fontWeightBold' display='inline'>Role</Box>: UX Researcher & Designer</Typography>
-          </Grid>
-          <Grid item className={classes.gridItemHeader}>
-          <Typography variant = 'body'><Box fontWeight='fontWeightBold' display='inline'>Team</Box>: Cindy Liu, Evelyn Li, Rachel Arredondo</Typography>
-          </Grid>
-          <Grid item className={classes.gridItemHeader}>
-          <Typography variant = 'body'><Box fontWeight='fontWeightBold' display='inline'>Tools Used</Box>: Figma</Typography>
-          </Grid>
-          </Grid>
-          </Grid>
-          </Link>
-          </Box>
-  </motion.div>
-  <motion.div
-  whileHover={{
-    scale: 1.1,
-    transition: { duration: 0.5 },
-  }}
-  whileTap={{ scale: 0.9 }}
-> <Grid
-        container
-        direction="row"
-        justify="stretch"
-        alignItems="flex-start"
-        className={classes.gridItem}
+        <Grid container>
+          
+          <Grid item xs={12}>
+      <motion.div
+       whileHover={{
+         scale: 1.05,
+         transition: { duration: 0.5 },
+        }}
+       whileTap={{ scale: 0.9 }}
       >
-          <Grid item xs={12} sm={6} className={classes.gridItem}>
-          <img className={classes.cover} alt="complex" width = '100' src={bra} />
-          </Grid>
-          <Grid item xs={12} sm={6} direction="column">
-          <Grid item className={classes.gridItemHeader}>
-          <Typography variant = 'h6'>Black Royal Art</Typography>
-          <Typography variant = 'button' color = "primary">UX Design for an E-commerce Website</Typography>
-          </Grid>
-          <Grid item className={classes.gridItemHeader}>
-          <Typography variant = 'body'><Box fontWeight='fontWeightBold' display='inline'>Role</Box>: UX Researcher & Designer</Typography>
-          </Grid>
-          <Grid item className={classes.gridItemHeader}>
-          <Typography variant = 'body'><Box fontWeight='fontWeightBold' display='inline'>Team</Box>: Cindy Liu, Evelyn Li, Rachel Arredondo</Typography>
-          </Grid>
-          <Grid item className={classes.gridItemHeader}>
-          <Typography variant = 'body'><Box fontWeight='fontWeightBold' display='inline'>Tools Used</Box>: Figma</Typography>
-          </Grid>
-          </Grid>
-          </Grid>
-  </motion.div>
-  <motion.div
+      <Card width={600} className={classes.card}>
+        <CardActionArea>
+          <CardMedia
+           className={classes.media}
+           image={desktopHome}
+           title="Contemplative Reptile"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+             EasyA
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+             A Digital Personal Health Care Journal
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Chip variant="outlined" color = "primary" label="UX Research"/>
+          <Chip variant="outlined" color = "primary" label="UX Design"/>
+        </CardActions>
+      </Card>
+      </motion.div>
+      </Grid>
+      <Grid item xs={6}>
+      <motion.div
+       whileHover={{
+         scale: 1.05,
+         transition: { duration: 0.5 },
+       }}
+       whileTap={{ scale: 0.9 }}
+      >
+      <Card className={classes.card}>
+        <CardActionArea>
+          <CardMedia
+           className={classes.media}
+           image={wayq}
+           title="Contemplative Reptile"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              2WayQ
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+          Polling Tool for Online Learning
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+      <Chip variant="outlined" color = "primary" label="Front-End Development"/>
+      <Chip variant="outlined" color = "primary" label="UX Design"/>
+      </CardActions>
+    </Card>
+    </motion.div>
+    </Grid>
+    <Grid item xs={6}>
+    <motion.div
   whileHover={{
-    scale: 1.1,
+    scale: 1.05,
     transition: { duration: 0.5 },
   }}
   whileTap={{ scale: 0.9 }}
 >
-<Grid
-        container
-        direction="row"
-        justify="stretch"
-        alignItems="flex-start"
-        className={classes.gridItem}
-      >
-          <Grid item xs={12} sm={6} className={classes.gridItem}>
-          <img className={classes.cover} alt="complex" width = '100' src={wayq} />
-          </Grid>
-          <Grid item xs={12} sm={6} direction="column">
-          <Grid item className={classes.gridItemHeader}>
-          <Typography variant = 'h6'>2WayQ</Typography>
-          <Typography variant = 'button' color = "primary">Polling Tool for Online Learning</Typography>
-          </Grid>
-          <Grid item className={classes.gridItemHeader}>
-          <Typography variant = 'body'><Box fontWeight='fontWeightBold' display='inline'>Role</Box>: UX Researcher & Designer</Typography>
-          </Grid>
-          <Grid item className={classes.gridItemHeader}>
-          <Typography variant = 'body'><Box fontWeight='fontWeightBold' display='inline'>Team</Box>: Cindy Liu, Evelyn Li, Rachel Arredondo</Typography>
-          </Grid>
-          <Grid item className={classes.gridItemHeader}>
-          <Typography variant = 'body'><Box fontWeight='fontWeightBold' display='inline'>Tools Used</Box>: Figma</Typography>
-          </Grid>
-          </Grid>
-          </Grid>
-         
-  </motion.div>
+    <Card className={classes.card}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image={bra}
+          title="Contemplative Reptile"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            Black Royal Art
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+          UX Design for an E-commerce Website          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+      <Chip variant="outlined" color = "primary" label="UX Design"/>
+      </CardActions>
+    </Card>
+    </motion.div>
+    </Grid>
     </Grid>
       </Container>
     <About /> 
