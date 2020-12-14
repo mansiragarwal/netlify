@@ -117,6 +117,30 @@ const useStyles = makeStyles((theme) => ({
   media: {
     height: 400,
   },
+  responseName: {
+    fontSize: 40,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 26,
+    },
+  },
+  responseContent1: {
+    fontSize: 26,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 16,
+    },
+  },
+  responseContent2: {
+    display: 'inline',
+    [theme.breakpoints.down('sm')]: {
+      display: 'block',
+    },
+  },
+  responseContent3: {
+    fontSize: 20,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 16,
+    },
+  },
   }));
 
 export default function Home() {
@@ -137,19 +161,19 @@ export default function Home() {
            alignItems="flex-start"
           >
          <Box my={5}>
-           <Typography color = 'black' variant = 'h3'>Mansi Agarwal </Typography> 
-           <Typography variant = 'h5' color="primary">
+           <Typography className={classes.responseName}>Mansi Agarwal </Typography> 
+           <Typography className={classes.responseContent1} color="primary">
              <TextLoop>
               <span>Ex-Computer Science student </span>
               <span>Current Human-Computer Interaction student </span>
               <span>UX designer/researcher </span>
               <span>Front-end developer </span>
-             </TextLoop> <Box display='inline' color = "black">at Carnegie Mellon University.</Box> </Typography>
+             </TextLoop> <Box className={classes.responseContent2} color = "black">at Carnegie Mellon University.</Box> </Typography>
            
            </Box>
            <Grid item>
-      <Typography variant = 'h6'> Passionate about bringing more diversity into UX design and development.  </Typography> 
-      <Typography variant = 'h6'> Conversations lead to ideas - 
+      <Typography className={classes.responseContent3}> Passionate about bringing more diversity into UX design and development.  </Typography> 
+      <Typography  className={classes.responseContent3} > Conversations lead to ideas - 
       <Link href="mailto:mansi.r.agarwal@gmail.com" style={{ textDecoration: 'none' }} className={classes.link}> email me</Link> or find me on 
       <Link style={{ textDecoration: 'none' }} className={classes.link}> linkedIn</Link>.  
       </Typography> 
@@ -160,7 +184,7 @@ export default function Home() {
         <Grid container>
         <Grid item xs={12}>
           <Box my={5}>
-            <Typography variant = 'h5'>Projects</Typography>
+            <Typography className={classes.responseContent1}>Projects</Typography>
             <Divider />
           </Box>
         </Grid>
