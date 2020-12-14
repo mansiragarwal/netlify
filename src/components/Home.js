@@ -179,6 +179,7 @@ export default function Home() {
         }}
        whileTap={{ scale: 0.9 }}
       >
+        <Link href={`#/casestudy`} style={{ textDecoration: 'none' }}>
       <Card width={600} className={classes.card}>
         <CardActionArea>
           <CardMedia
@@ -200,9 +201,10 @@ export default function Home() {
           <Chip variant="outlined" color = "primary" label="UX Design"/>
         </CardActions>
       </Card>
+      </Link>
       </motion.div>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item>
       <motion.div
        whileHover={{
          scale: 1.05,
@@ -233,7 +235,7 @@ export default function Home() {
     </Card>
     </motion.div>
     </Grid>
-    <Grid item xs={6}>
+    <Grid item>
     <motion.div
   whileHover={{
     scale: 1.05,

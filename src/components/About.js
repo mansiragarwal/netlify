@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid, Typography } from '@material-ui/core';
+import { Container, Grid, Typography, Box } from '@material-ui/core';
 import me from './images/me.png'
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -64,17 +64,35 @@ export default function About() {
     return (
         <div>
             <Container>
+
               <Grid 
                container
-               direction= "row">
-                 <Grid item item xs={6} sm={3}>
-                   <Typography variant="h4">About Me</Typography>
-                   <Typography variant="body">I am currently pursuing a Bachelor’s in Human-Computer Interaction at Carnegie Mellon. Previously, I was studying computer science, but I had a strong calling towards human-centered design and software and changed my major as a senior. My journey so far has given me the technical abilities to make my ideas a reality, I am now excited to cultivate the thinking and skills it takes to make those ideas user-experience focused.
+               direction= "row"
+              >
+                 <Grid item item xs={12} sm={6}>
+                   <Typography variant="h5" color="primary">About Me</Typography>
+                   <Typography variant="body">
+                     <Box lineHeight={1.6}>I am currently pursuing a Bachelor’s in Human-Computer Interaction at Carnegie Mellon. Previously, 
+                    I was studying computer science, but I had a strong calling towards human-centered design and software and changed my major 
+                    as a senior. My journey so far has given me the technical abilities to make my ideas a reality, I am now excited to cultivate
+                    the thinking and skills it takes to make those ideas user-experience focused.
+                    My interest lies especially in the integration of diversity of thought, culture and perspectives into any project I am part 
+                    of. Being from an interdisciplinary and international background myself, I like to adopt this diversity in every project I work on.
+                    </Box>
+                    </Typography>
 
-My interest lies especially in the integration of diversity of thought, culture and perspectives into any project I am part of. Being from an interdisciplinary and international background myself, I like to adopt this diversity in every project I work on.</Typography>
+                    <Typography variant="body">
+                     <Box lineHeight={1.6}>I am currently pursuing a Bachelor’s in Human-Computer Interaction at Carnegie Mellon. Previously, 
+                    I was studying computer science, but I had a strong calling towards human-centered design and software and changed my major 
+                    as a senior. My journey so far has given me the technical abilities to make my ideas a reality, I am now excited to cultivate
+                    the thinking and skills it takes to make those ideas user-experience focused.
+                    My interest lies especially in the integration of diversity of thought, culture and perspectives into any project I am part 
+                    of. Being from an interdisciplinary and international background myself, I like to adopt this diversity in every project I work on.
+                    </Box>
+                    </Typography>
 
               </Grid>
-              <Grid item item xs={12} sm={6} className = {classes.picture}>
+              <Grid item item xs={6} sm={3} className = {classes.picture}>
               <img height={300} src={me} />
               </Grid>
               </Grid>
