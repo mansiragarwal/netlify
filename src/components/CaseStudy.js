@@ -25,12 +25,15 @@ import before from './images/Before.png'
 import after from './images/After.png'
 import insight from './images/InterviewInsight.png'
 import main from './images/screenshot.png'
+import lofi from './images/lo-fi.png'
+import hifidesk from './images/hifidesk.png'
 import afterPersona from './images/afterPersona.png'
 import desktopHome from './images/Desktop/Home.png'
 import desktopReports from './images/Desktop/Reports.png'
 import desktopVisits from './images/Desktop/pinnedVisits.png'
 import desktopPinned from './images/Desktop/pinnedRecords.png'
 import mobileRecords from './images/Mobile/Mobile-Records.png'
+import research from './images/research.png'
 import mobileHome from './images/Mobile/Mobile-Records-3.png'
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -83,8 +86,14 @@ const useStyles = makeStyles((theme) => ({
     gridItem: {
         paddingTop: 50
     },
+    gridInside: {
+      paddingTop: 25
+  },
     gridItemHeader: {
-        paddingTop: 15
+        paddingTop: 10,
+        [theme.breakpoints.down('sm')]: {
+          paddingTop: 5,
+        },
     },
     listRoot: {
       display: 'flex',
@@ -112,7 +121,36 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: "fontWeightBold"
     },
     toolbar: theme.mixins.toolbar,
-    
+    responseName: {
+      fontSize: 35,
+      [theme.breakpoints.down('sm')]: {
+        fontSize: 25,
+      },
+    },
+    responseContent1: {
+      fontSize: 20,
+      [theme.breakpoints.down('sm')]: {
+        fontSize: 12,
+      },
+    },
+    responseContent2: {
+      fontSize: 24,
+      [theme.breakpoints.down('sm')]: {
+        fontSize: 20,
+      },
+    },
+    responseContent3: {
+      fontSize: 16,
+      [theme.breakpoints.down('sm')]: {
+        fontSize: 14,
+      },
+    },
+    responseImage: {
+      width: 500,
+      [theme.breakpoints.down('sm')]: {
+        width: 300,
+      },
+    },
   }));
 
   
@@ -124,22 +162,9 @@ export default function Home() {
     const [activeStep, setActiveStep] = React.useState(0);
     const steps = ['Overview', 'Research', 'Defining Focus', 'Prototyping', 'Final Design', 'Results'];
     const anchors = ['#Overview', '#Research', '#DefiningFocus', '#Prototyping', '#FinalDesign', '#Results'];
-    useEffect(() => {
-      let progressBarHandler = () => {
-        const totalScroll = document.documentElement.scrollTop;
-        const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scroll = `${totalScroll / windowHeight}`;
-        
-        setScroll(scroll);
-      }
-
-      window.addEventListener("scroll", progressBarHandler);
-      return () => window.removeEventListener("scroll", progressBarHandler);
-    });
-
+   
     const handleStep = (step) => () => {
         setActiveStep(step);
-        console.log("#"+{step})
     };
 
   return (
@@ -155,9 +180,9 @@ export default function Home() {
           >
             <Grid item xs={12} sm={6} 
              className={classes.gridItemHeader}>
-               <Typography variant = 'h4'>EasyA</Typography>
-               <Typography variant = 'button'>
-                 <Box fontWeight="fontWeightMedium" fontSize = {20}>
+               <Typography className={classes.responseName}>EasyA</Typography>
+               <Typography variant = 'button' className={classes.responseContent1}>
+                 <Box fontWeight="fontWeightMedium">
                   A Digital Personal Health Care Journal
                  </Box>
                </Typography>
@@ -165,19 +190,19 @@ export default function Home() {
             
             <Grid item xs={12} sm={6} direction="column">
               <Grid item className={classes.gridItemHeader}>
-                <Typography variant = 'body'>
+                <Typography className={classes.responseContent3}>
                   <Box fontWeight='fontWeightBold' display='inline'>Role</Box>
                   : UX Researcher & Designer
                 </Typography>
               </Grid>
               <Grid item className={classes.gridItemHeader}>
-                <Typography variant = 'body'>
+                <Typography className={classes.responseContent3}>
                   <Box fontWeight='fontWeightBold' display='inline'>Team</Box>
                   : Cindy Liu, Evelyn Li, Rachel Arredondo
                 </Typography>
               </Grid>
               <Grid item className={classes.gridItemHeader}>
-                <Typography variant = 'body'><Box fontWeight='fontWeightBold' display='inline'>Tools Used</Box>
+                <Typography className={classes.responseContent3}><Box fontWeight='fontWeightBold' display='inline'>Tools Used</Box>
                 : Figma
                 </Typography>
               </Grid>
@@ -207,12 +232,12 @@ export default function Home() {
       <Container >
       <Grid
         container
-        direction="column"
         justify="stretch"
         alignItems="flex-start"
       >
+        
         <Grid item className={classes.gridItem}>
-          <Typography variant = 'h5' color="primary">
+          <Typography className={classes.responseContent2} color="primary">
             <Box fontWeight='fontWeightMedium' display='inline'>
               <section id='Overview'>
                 Overview
@@ -222,108 +247,116 @@ export default function Home() {
           
           <Grid
            container
-           direction="row"
            justify="stretch"
            alignItems="flex-start"
            >
-             <Grid item xs={12} sm={6}>
-              <Typography variant = 'body'>
-                Highly mobile users currently rely on communicating with people back home or 
-                carrying their paper records, or rely on their memory to inform new or existing 
-                providers of their history. Being on the go means having all your data with you 
-                at all times in a more accessible manner. But because of papers and various online
-                portals many people’s medical records are scattered everywhere. We want to provide 
-                a home for this data in the form of a personal health journal, for owning and 
-                sharing your health information at any given time and place.
-                We aimed to create a personal health journal for each user - a space to upload, 
+            <Grid item xs>
+              <Typography className={classes.responseContent3}>
+                EasyA aimed to provide a home for personal health data in the form of a personal health journal, 
+                for owning and sharing your health information at any given time and place.
+                We wanted to create a personal health journal for each user - a space to upload, 
                 edit and store their medical history for understanding their own health and help 
                 share with their health care providers.
               </Typography>
-            </Grid>
-          
-            <Grid item xs={12} sm={6}>
-              <img height={300} src={main} />
+              </Grid>
+              <Grid item>
+              <img className={classes.responseImage} src={desktopHome} />
             </Grid>
           </Grid>
-        <Divider />
+        <Divider/>
         </Grid>
-        
-        <Grid item className={classes.gridItem}>
-        <Grid item>
-          <Typography variant = 'h5' color="primary">
-            <Box fontWeight='fontWeightMedium' display='inline'>
-            <section id='Research'>
-              Initial Research
-            </section>
-            </Box>
-          </Typography>
+        <Grid container>
+        <Grid item className={classes.gridInside}>
           
-          
-          <Typography variant = 'h6'>
-            Interviews
-          </Typography>
-          
-          <Typography variant = 'body'>
-            <Box fontWeight='fontWeightBold' display='inline'>
+            <Typography className={classes.responseContent2} color="primary">
+              <Box fontWeight='fontWeightMedium' display='inline'>
+              <section id='Research'>
+                Research
+              </section>
+              </Box>
+            </Typography>
+            <Typography variant = 'h6' >
+              Interviews
+            </Typography>
+            <Grid item xs>
+            <Box fontWeight='fontWeightBold' display='block' className={classes.responseContent3}>
               Who did we interview?
             </Box>
-          </Typography>
-        </Grid>
+            <Box className={classes.responseContent3}>
+              We interviewed participants who represent various backgrounds, cultures, ages, genders, and experiences. These individuals had varied experiences in accessing their medical records.
+            </Box>
+          </Grid>
+        
+          <Grid item xs className={classes.gridInside}>
+            <Box fontWeight='fontWeightBold' display='block' className={classes.responseContent3}>
+              Activities
+            </Box>
+            <Box className={classes.responseContent3}>
+              In order to discover more valuable insights pertaining to our research goal, we conducted over 12 contextual user-interviews using Direct Storytelling as the key method. 
+            </Box>
+          </Grid>
           
-          <Typography variant = "body">We interviewed participants who represent various backgrounds, cultures, ages, genders, and experiences. These individuals had varied experiences in accessing their medical records. 
-</Typography>
-<Grid item className={classes.gridItem}>
-<Typography variant = 'body'><Box fontWeight='fontWeightBold' display='inline'>Activities</Box></Typography></Grid>
-<Typography variant = "body">In order to discover more valuable insights pertaining to our research goal, we conducted over 12 contextual user-interviews using Direct Storytelling as the key method. 
-</Typography>
-
-<Grid item className={classes.gridItem}>
-<Typography variant = 'body'><Box fontWeight='fontWeightBold' display='inline'>Methods</Box></Typography></Grid>
-
-<Typography variant = "body">Using Zoom, we interviewed people in over 4 different countries and experiences accessing their medical in many more countries.  </Typography>
-<Grid item className={classes.gridItem}>
-<Typography variant = 'body'><Box fontWeight='fontWeightBold' display='inline'>Research Findings</Box></Typography>
+          <Grid item xs className={classes.gridInside}>
+            <Box fontWeight='fontWeightBold' display='block' className={classes.responseContent3}>
+              Methods
+            </Box>
+            <Box className={classes.responseContent3}>
+              Using Zoom, we interviewed people in over 4 different countries and experiences 
+              accessing their medical in many more countries.
+            </Box>
           </Grid>
-          <img height={400} src={insight} />
-          <Grid item className={classes.gridItem}>
-          <Typography variant = 'h5' color="primary"><Box fontWeight='fontWeightMedium' display='inline'>Customer Journey Map</Box></Typography>
           </Grid>
-          <img height={370} src={before} />
+          <Grid item className={classes.gridInside}>
+          <Typography variant = 'h6'>
+              Research Findings
+            </Typography>
+            <Box fontWeight='fontWeightBold' display='block' className={classes.responseContent3}>
+              Medical Records
+            </Box>
+            <Box className={classes.responseContent3}>
+            One of the unexpected findings we have is the lack of any coherent journey for accessing or interpreting medical records. Especially for people who travel frequently or moved often (such as international students). People often faced serious medical issues as a result not being able to find or access medical information. There is not a universal record that is shareable among hospitals, from local to international, doctor to patient, and doctor to doctor. One reason that hinders the shareable record is the distrust between hospitals, resulted in repetitive testings. </Box>
+          </Grid>
+        
+        
+          <Grid item className={classes.gridInside}>
+            <Box fontWeight='fontWeightBold' display='block' className={classes.responseContent3}>
+              Medical Resources
+            </Box>
+            <Box className={classes.responseContent3}>
+            Uncertainty about medical insurance is also an unexpected finding for us. Due to uncertainty of medical coverage about the insurace (i.e. instruction of how to claim it, the coverage of insurance etc.), international students tend to avoid go to hospitals in a foreign country.  </Box>
+          </Grid>
+          
+          <Grid item className={classes.gridInside}>
+            <Box fontWeight='fontWeightBold' display='block' className={classes.responseContent3}>
+              Standardization
+            </Box>
+            <Box className={classes.responseContent3}>
+            We also found that some of our interviewees like the current apps/website they are using while some others are on the totally opposite side of the spectrum. This conflict in preferences in customers shows that everyone’s standard is truly different and right now there’s a lack of standard in this field/domain.
+            </Box>
+          
+          <Divider />
+          </Grid>
+          
           <Divider />
       </Grid>
-      <Grid item className={classes.gridItem}>
-      <section id='DefiningFocus'>
-          <Typography variant = 'h5'>Defining Focus</Typography>
-          </section>
-      </Grid>
-      <Grid item className={classes.gridItem}>
-          <Typography variant = 'h5'>Scenario</Typography>
-          <Typography variant = 'h6'>Personas</Typography>
-          <Typography variant = 'h6'>Context</Typography>
-          
-      </Grid>
-      <Grid item className={classes.gridItem}>
+<Grid item xs={12}>
       <section id='Prototyping'>
-          <Typography variant = 'h5'>Prototyping</Typography>
-          </section>
-          <Typography variant = 'h6'>User Flows</Typography>
-          <Typography variant = 'h6'>Micro-Sitemap</Typography>
-          <Typography variant = 'h6'>Lo-Fi Prototype</Typography>
-          <Typography variant = 'h6'>Mid-Fi Prototype</Typography>
-      </Grid>
-      <Grid item className={classes.gridItem}>
-      <section id='FinalDesign'>
-          <Typography variant = 'h5'>Final Design</Typography>
-         </section>
-      </Grid>
-
-      </Grid>
-      <Grid item className={classes.gridItem}>
-      <section id='Results'>
-          <Typography variant = 'h5' color="primary"><Box fontWeight='fontWeightMedium' display='inline'>Results</Box></Typography>
+          <Typography className={classes.responseContent2} color="primary">Prototyping</Typography>
           </section>
           </Grid>
-          <img height={400} src={afterPersona} />
+          <Grid item>
+          <Typography variant = 'h6'>Lo-Fi Prototype</Typography>
+          <img className={classes.responseImage} src={lofi} />
+          <Divider />
+          </Grid>
+          <Grid item xs={12}>
+      <section id='FinalDesign'>
+          <Typography className={classes.responseContent2} color="primary">Final Design</Typography>
+          </section>
+          </Grid>
+          <img className={classes.responseImage} src={hifidesk} />
+          
+      </Grid>
      
       </Container>
     </div>
