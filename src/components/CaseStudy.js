@@ -160,8 +160,8 @@ export default function Home() {
     const classes = useStyles();
     const [scroll, setScroll] = useState(0);
     const [activeStep, setActiveStep] = React.useState(0);
-    const steps = ['Overview', 'Research', 'Defining Focus', 'Prototyping', 'Final Design', 'Results'];
-    const anchors = ['#Overview', '#Research', '#DefiningFocus', '#Prototyping', '#FinalDesign', '#Results'];
+    const steps = ['Overview', 'Research', 'Prototyping', 'Final Design', 'Results'];
+    const anchors = ['#Overview', '#Research', '#Prototyping', '#FinalDesign', '#Results'];
    
     const handleStep = (step) => () => {
         setActiveStep(step);
@@ -339,7 +339,7 @@ export default function Home() {
           
           <Divider />
       </Grid>
-<Grid item xs={12}>
+<Grid item xs={12} className={classes.gridItem}>
       <section id='Prototyping'>
           <Typography className={classes.responseContent2} color="primary">Prototyping</Typography>
           </section>
@@ -349,15 +349,59 @@ export default function Home() {
           <img className={classes.responseImage} src={lofi} />
           <Divider />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} className={classes.gridItem}>
       <section id='FinalDesign'>
           <Typography className={classes.responseContent2} color="primary">Final Design</Typography>
           </section>
           </Grid>
           <img className={classes.responseImage} src={hifidesk} />
-          
+          <Grid item xs={12} className={classes.gridItem}>
+      <section id='Results'>
+          <Typography className={classes.responseContent2} color="primary">Results</Typography>
+          </section>
+          </Grid>
+          <Grid item xs={12} >
+          EasyA is a personal health journal that aims to digitize the current medical record keeping process. EasyA is
+          <Grid item className={classes.gridInside}>
+            <Box fontWeight='fontWeightBold' display='block' className={classes.responseContent3}>
+            Comprehensive
+            </Box>
+            <Box className={classes.responseContent3}>
+            - reports are automatically generated
+            </Box>
+            <Box className={classes.responseContent3}>
+              - personalized service experience  
+              </Box>
+          </Grid>
+          <Grid item className={classes.gridInside}>
+            <Box fontWeight='fontWeightBold' display='block' className={classes.responseContent3}>
+            Digital - Easy to access x Fast to update 
+            </Box>
+            <Box className={classes.responseContent3}>
+            - able to edit / add new records manually
+            </Box>
+            <Box className={classes.responseContent3}>
+              - able to pin reports and visits for quick and easy future reference 
+              </Box>
+          </Grid>
+          <Grid item className={classes.gridInside}>
+            <Box fontWeight='fontWeightBold' display='block' className={classes.responseContent3}>
+            Responsive and there when you need it
+            </Box>
+            <Box className={classes.responseContent3}>
+            - medical information hub on the home page --> easily  find info needed for filling out any medical forms
+            </Box>
+            <Box className={classes.responseContent3}>
+              - responsive --> any device </Box>
+              <Box className={classes.responseContent3} mb={100}>
+                - all past records in one place and syncd data with Zocdoc for a more convenient and comprehensive customer experience
+                </Box>
+          </Grid>
+      </Grid>
       </Grid>
      
+
+
       </Container>
     </div>
     </ThemeProvider>
